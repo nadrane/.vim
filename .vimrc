@@ -28,6 +28,7 @@ au BufNewFile,BufRead *.js, *.html, *.css
 set smartcase " Use case if caps are used
 set incsearch " Show match as search proceeds
 set hlsearch  " Search highlighting
+set number    " Show line numbers
 
 set ruler
 set showcmd
