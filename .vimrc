@@ -1,5 +1,7 @@
 set shell=/bin/sh " Rquired when using the fish sell. All plugins break without this.
 
+let mapleader = "\<Space>" 
+
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
@@ -8,6 +10,9 @@ set fileformat=unix
 set formatprg=yapf
 
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+autocmd FileType python nnoremap <buffer> <localleader>c I#<esc>
+autocmd FileType javascript nnoremap <buffer> <localleader>c I//<esc>
+autocmd FileType mumps nnoremap <buffer> <localleader>c I;<esc>
 
 au BufNewFile,BufRead *.py
     \ set expandtab
