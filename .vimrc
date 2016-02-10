@@ -6,28 +6,34 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set autoindent
-set fileformat=unix
-set formatprg=yapf
 
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 autocmd FileType python nnoremap <buffer> <localleader>c I#<esc>
 autocmd FileType javascript nnoremap <buffer> <localleader>c I//<esc>
 autocmd FileType mumps nnoremap <buffer> <localleader>c I;<esc>
 
-au BufNewFile,BufRead *.py
-    \ set expandtab
-"    \ set textwidth=120 Requires a special addon to be installed to work
-    \ set tabstop=4
-    \ set softtabstop=4
-    \ set shiftwidth=4
-    \ set autoindent
-    \ set fileformat=unix
-    \ set formatprg=yapf
+autocmd BufNewFile,BufRead *.py
+     set expandtab
+     set tabstop=4
+     set softtabstop=4
+     set shiftwidth=4
+     set autoindent
+     set fileformat=unix
+     set formatprg=yapf
 
-au BufNewFile,BufRead *.js, *.html, *.css
-    \ set tapstop=2
-    \ set softtabstop=2
-    \ set shiftwidth=2
+autocmd BufNewFile,BufRead *.js, *.html, *.css
+     set tabstop=2
+     set softtabstop=2
+     set shiftwidth=2
+
+" Status lines
+set statusline=%f
+set statusline+=\ -\ FileType:
+set statusline+=%y
+set statusline=+%=
+set statusline+=%l
+set statusline+=/
+set statusline+=%L
 
 " Search settings
 set smartcase " Use case if caps are used
@@ -44,7 +50,7 @@ syntax on
 inoremap jk <ESC>
 
 " Allow us to insert new lines without entering insert mode
-map <Enter> O<ESC>
+inoremap <Enter> O<ESC>
 
 " Set up vundle and plugins"
 set nocompatible              " be iMproved, required
@@ -52,6 +58,9 @@ filetype off                  " required
 
 " Set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
+
+" Stop overwriting paste buffer when I delete one character
+nnoremap "_x x
 
 call vundle#begin()
 " Keep Plugin commands between vundle#begin/end.
@@ -62,6 +71,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'suan/vim-instant-markdown'
 "Plugin 'nvie/vim-flake8'
 Plugin 'klen/python-mode'
+Plugin 'zoner14/vim_mumps'
 call vundle#end()            " required
 
 filetype plugin indent on    " required
