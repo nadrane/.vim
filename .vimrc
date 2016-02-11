@@ -68,7 +68,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'suan/vim-instant-markdown'
 "Plugin 'nvie/vim-flake8'
 Plugin 'klen/python-mode'
-Plugin 'zoner14/vim_mumps'
+Plugin 'file:///Users/nicholasdrane/coding/vim_mumps'
 call vundle#end()            " required
 
 filetype plugin indent on    " required
