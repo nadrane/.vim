@@ -1,16 +1,13 @@
 set shell=/bin/sh " Rquired when using the fish sell. All plugins break without this.
 
 let mapleader = "\<Space>" 
-
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set autoindent
+let localleader = "\<Space>" 
 
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 autocmd FileType python nnoremap <buffer> <localleader>c I#<esc>
 autocmd FileType javascript nnoremap <buffer> <localleader>c I//<esc>
 autocmd FileType mumps nnoremap <buffer> <localleader>c I;<esc>
+autocmd BufRead,BufNewFile *.md setlocal spell spelllang=en_us
 
 autocmd BufNewFile,BufRead *.py
      set expandtab
@@ -50,7 +47,7 @@ syntax on
 inoremap jk <ESC>
 
 " Allow us to insert new lines without entering insert mode
-inoremap <Enter> O<ESC>
+nnoremap <Enter> i<Enter><ESC>
 
 " Set up vundle and plugins"
 set nocompatible              " be iMproved, required
