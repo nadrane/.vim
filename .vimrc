@@ -27,7 +27,19 @@ function SetFrontEndOptions()
   set shiftwidth=2
 endfunction
 
-" Status lines
+""""""""""""""""" Enter and exit paste mode when pasting from mouse
+let &t_SI .= "\<Esc>[?2004h"
+let &t_EI .= "\<Esc>[?2004l"
+
+inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
+
+function! XTermPasteBegin()
+  set pastetoggle=<Esc>[201~
+  set paste
+  return ""
+endfunction
+""""""""""""""""""
+
 set statusline=%f
 set statusline+=\ -\ FileType:
 set statusline+=%y
@@ -64,7 +76,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 nnoremap "_x x
 
 " Easy swith betweem splits
-noremap <C-J> <C-W><C-J>
+nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
