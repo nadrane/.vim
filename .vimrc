@@ -8,20 +8,24 @@ autocmd FileType python nnoremap <buffer> <localleader>c I#<esc>
 autocmd FileType javascript nnoremap <buffer> <localleader>c I//<esc>
 autocmd FileType mumps nnoremap <buffer> <localleader>c I;<esc>
 autocmd BufRead,BufNewFile *.md setlocal spell spelllang=en_us
+autocmd FileType python call SetPythonOptions()
+autocmd BufNewFile,BufRead *.js, *.html, *.css call SetFrontEndOptions()
 
-autocmd BufNewFile,BufRead *.py
-     set expandtab
-     set tabstop=4
-     set softtabstop=4
-     set shiftwidth=4
-     set autoindent
-     set fileformat=unix
-     set formatprg=yapf
+function SetPythonOptions()
+  set expandtab
+  set tabstop=4
+  set softtabstop=4
+  set shiftwidth=4
+  set autoindent
+  set fileformat=unix
+  set formatprg=yapf
+endfunction
 
-autocmd BufNewFile,BufRead *.js, *.html, *.css
-     set tabstop=2
-     set softtabstop=2
-     set shiftwidth=2
+function SetFrontEndOptions()
+  set tabstop=2
+  set softtabstop=2
+  set shiftwidth=2
+endfunction
 
 " Status lines
 set statusline=%f
@@ -59,6 +63,12 @@ set rtp+=~/.vim/bundle/Vundle.vim
 " Stop overwriting paste buffer when I delete one character
 nnoremap "_x x
 
+" Easy swith betweem splits
+noremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
 call vundle#begin()
 " Keep Plugin commands between vundle#begin/end.
 " let Vundle manage Vundle, required
@@ -67,8 +77,9 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'suan/vim-instant-markdown'
 "Plugin 'nvie/vim-flake8'
-Plugin 'klen/python-mode'
-Plugin 'file:///Users/nicholasdrane/coding/vim_mumps'
+"Plugin 'klen/python-mode'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'zoner14/vim_mumps'
 call vundle#end()            " required
 
 filetype plugin indent on    " required
